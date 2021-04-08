@@ -1,12 +1,58 @@
+@font-face {
+  font-family: "Ivar Display";
+  src: url("./IvarDisplayCondensed-Light\ \(1\).woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "NHaasGrotesk";
+  src: url("./NHaasGroteskDSPro-45Lt.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Harmond";
+  src: url("./MonumentExtended-Regular.woff2") format("woff2");
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Harmond";
+  font-weight: 100;
+}
+
+h1 {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
+  color: transparent;
+  letter-spacing: 1px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
 }
 
 body,
 html {
   overscroll-behavior: none;
+  background-color: #000000;
+}
+
+body:before {
+  background: radial-gradient(
+    circle at center,
+    rgba(100, 0, 200, 0.7) 0,
+    #000 115%
+  );
+  opacity: 0.175;
+  content: "";
+  display: block;
+  height: 100vh;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 main {
@@ -21,38 +67,197 @@ main {
   will-change: transform;
 }
 
+.info-mask {
+  position: fixed;
+  bottom: 15%;
+  left: 10%;
+  width: 100%;
+  height: 48px;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.info-mask h1 {
+  display: block;
+  transform: translateY(48px);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+  transition: 0.2s;
+}
+
+.info-mask.active h1 {
+  transform: translateY(0);
+  transition: 0.2s;
+}
+
 .one {
   position: relative;
   width: 100%;
-  height: 2000px;
-  background-color: red;
+  height: 200vh;
 }
+.header {
+  position: absolute;
+  left: 5%;
+  top: 20vh;
+  width: 90%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.header h1 {
+  -webkit-text-stroke-width: 1px;
+  font-size: 3rem;
+  line-height: 3rem;
+  color: #ffffff;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+}
+.bio {
+  position: absolute;
+  top: 100vh;
+  height: 100vh;
+  width: 100%;
+}
+
+.bio-container {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  width: 45%;
+  height: 40%;
+  color: #ffffff;
+}
+
+.bio-container p {
+  font-family: NHaasGrotesk;
+  font-size: 1.5rem;
+}
+
+nav {
+  position: absolute;
+  width: 100%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  padding: 0 5% 0 5%;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+nav ul {
+  display: flex;
+  color: #ffffff;
+  list-style: none;
+  width: 250px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul li {
+  font-family: NHaasGrotesk;
+  cursor: pointer;
+}
+
+li:hover {
+  color: rgb(66, 66, 203);
+}
+
+nav h1 {
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
 .two {
   position: relative;
-  width: 5000px;
-  height: 100vh;
-  background-color: green;
+  width: 3000px;
+  height: 101vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   will-change: transform;
 }
 
-.two div {
+.project-title {
+  position: absolute;
+  left: 5vw;
+  z-index: 100;
+}
+
+.flex-item {
   position: relative;
-  width: 33%;
+  width: 600px;
   height: 100%;
+}
+
+.image-wrap {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  width: 50%;
+  height: 70%;
+}
+
+.image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(80%);
+  cursor: pointer;
+}
+
+.image-two {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  clip-path: circle(0% at 30% 20%);
+  pointer-events: none;
+  transition: clip-path 0.1s;
 }
 
 .three {
   position: relative;
   width: 100%;
-  height: 2000px;
-  background-color: blue;
+  height: 150vh;
 }
 
-h1 {
+.clients {
   position: absolute;
-  bottom: 50%;
-  left: 50%;
-  background-color: orange;
+  left: 5%;
+  top: 5vh;
+  width: 90%;
+  height: 80vh;
+}
+
+.clients ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.clients ul li {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  list-style: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.351);
+  font-size: 2.5rem;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50vh;
+  padding: 5%;
+  color: #ffffff;
 }
